@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class Aulas extends AppCompatActivity {
 
-    EditText edtHorario, edtCodbeacon, edtNombrebeacon, edtFechainicio,edtFechafin;
+    EditText edtHorario, edtCodbeacon, edtNombrebeacon, edtFechainicio,edtFechafin,edtNombarea,edtDescriparea,edtEstado,edtNombambiente,edtDescripamb;
     Button btnAgregar, btnCargar, btnBuscar;
     ImageView imagenes;
     RequestQueue request;
@@ -44,11 +44,16 @@ public class Aulas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas);
 
+        edtNombarea = (EditText) findViewById(R.id.edtNombarea);
+        edtDescriparea = (EditText) findViewById(R.id.edtDescriparea);
+        edtEstado = (EditText) findViewById(R.id.edtEstado);
         edtHorario = (EditText) findViewById(R.id.edtHorario);
         edtCodbeacon = (EditText) findViewById(R.id.edtCodbeacon);
         edtNombrebeacon = (EditText) findViewById(R.id.edtNombreBeacon);
         edtFechainicio = (EditText) findViewById(R.id.edtFechainicio);
         edtFechafin = (EditText) findViewById(R.id.edtFechafin);
+        edtNombambiente = (EditText) findViewById(R.id.edtNombambiente);
+        edtDescripamb = (EditText) findViewById(R.id.edtDescripamb);
         imagenes=(ImageView)findViewById(R.id.imagenId);
 
 
@@ -71,6 +76,7 @@ public class Aulas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cargarImagen();
+                cargarImagen1();
             }
         });
 
@@ -86,6 +92,32 @@ public class Aulas extends AppCompatActivity {
     private void cargarImagen(){
 
         String url = "http://192.168.1.15:80/bdutp/imagen/campus.jpg";
+        url=url.replace(" ","%20");
+        url=url.replace(" ","%20");
+
+        ImageRequest imageRequest=new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+
+                imagenes.setImageBitmap(response);
+
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplication(),"error al cargar imagen",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        request.add(imageRequest);
+
+    }
+    private void cargarImagen1(){
+
+        String url = "http://192.168.1.15:80/bdutp/imagen/labc.jpg";
+        url=url.replace(" ","%20");
         url=url.replace(" ","%20");
 
         ImageRequest imageRequest=new ImageRequest(url, new Response.Listener<Bitmap>() {
@@ -129,6 +161,11 @@ public class Aulas extends AppCompatActivity {
                 parametros.put("nomb_beacon",edtNombrebeacon.getText().toString());
                 parametros.put("fecha_inicio",edtFechainicio.getText().toString());
                 parametros.put("fecha_fin",edtFechafin.getText().toString());
+                parametros.put("area",edtNombarea.getText().toString());
+                parametros.put("descrip_area",edtDescriparea.getText().toString());
+                parametros.put("estado",edtEstado.getText().toString());
+                parametros.put("nomb_amb",edtNombambiente.getText().toString());
+                parametros.put("descrip_amb",edtDescripamb.getText().toString());
 
                 return parametros;
 
@@ -151,6 +188,11 @@ public class Aulas extends AppCompatActivity {
                         edtNombrebeacon.setText(jsonObject.getString("nomb_beacon"));
                         edtFechainicio.setText(jsonObject.getString("fecha_inicio"));
                         edtFechafin.setText(jsonObject.getString("fecha_fin"));
+                        edtNombarea.setText(jsonObject.getString("area"));
+                        edtDescriparea.setText(jsonObject.getString("descrip_area"));
+                        edtEstado.setText(jsonObject.getString("estado"));
+                        edtNombambiente.setText(jsonObject.getString("nom_amb"));
+                        edtDescripamb.setText(jsonObject.getString("descrip_amb"));
 
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
