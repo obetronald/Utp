@@ -4,164 +4,273 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBlanco"
     tools:context=".Aulas">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imagenId"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
-                />
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp" />
+
 
             <LinearLayout
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="285dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
-
-            <EditText
-                android:id="@+id/edtHorario"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="ID" />
-
-            <Button
-                android:id="@+id/btnConsultar"
-                android:text="ID"
-                android:layout_weight="1"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
-                <TextView
-                    android:textSize="10sp"
-                    android:layout_width="30dp"
-                    android:textColor="@color/colorVerdeAbeto"
-                    android:layout_height="wrap_content"
-                    android:text="Area"/>
 
                 <EditText
-                    android:id="@+id/edtArea"
-                    android:layout_width="62dp"
-                    android:textSize="10sp"
-                    android:hint=" "
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:textColor="@color/colorVerdeAbeto"
-                    android:layout_width="55dp"
+                    android:id="@+id/edtHorario"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:text="Descripcion"
+                    android:hint="ID"
+                    android:textColor="@color/colorCeleste" />
+
+                <Button
+                    android:id="@+id/btnConsultar"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="200dp"
+                    android:text="ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:text="Area"
+                    android:textColor="@color/colorVerdeAbeto"
                     android:textSize="10sp" />
 
                 <EditText
-                    android:id="@+id/edtAreadescrip"
-                    android:layout_width="250dp"
+                    android:id="@+id/edtNombarea"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
                     android:textSize="10sp"
-                    android:layout_height="wrap_content" />
+                    android:visibility="visible" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/edtDescriparea"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
+
                 <TextView
-                    android:textSize="10sp"
-                    android:layout_width="35dp"
-                    android:textColor="@color/colorVerdeAbeto"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
-                    android:text="Estado"/>
+                    android:text="Estado"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
 
                 <EditText
                     android:id="@+id/edtEstado"
                     android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:selectAllOnFocus="false"
+                    android:textColor="@color/colorCeleste"
                     android:textSize="10sp"
-                    android:layout_height="wrap_content"/>
+                    android:visibility="visible" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center">
 
                 <TextView
-                    android:textSize="10sp"
                     android:layout_width="45dp"
-                    android:textColor="@color/colorVerdeAbeto"
                     android:layout_height="wrap_content"
-                    android:text="Codigo Beacon"/>
+                    android:text="Codigo Beacon"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
                 <EditText
                     android:id="@+id/edtCodbeacon"
-                    android:layout_width="45dp"
-                    android:textSize="10sp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    />
+                    android:textColor="@color/colorCeleste"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
 
                 <TextView
-                    android:textSize="10sp"
-                    android:layout_width="45dp"
-                    android:textColor="@color/colorVerdeAbeto"
+                    android:layout_width="38dp"
                     android:layout_height="wrap_content"
-                    android:text="Nombre Beacon"/>
+                    android:text="Nombre Beacon"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
                 <EditText
                     android:id="@+id/edtNombreBeacon"
-                    android:layout_width="60dp"
-                    android:textSize="10sp"
+                    android:layout_width="66dp"
                     android:layout_height="wrap_content"
-                    />
-
-                <TextView
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
                     android:textSize="10sp"
-                    android:layout_width="45dp"
-                    android:textColor="@color/colorVerdeAbeto"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha inicio"/>
-                <EditText
-                    android:id="@+id/edtFechainicio"
-                    android:layout_width="60dp"
-                    android:textSize="10sp"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:textSize="10sp"
-                    android:layout_width="45dp"
-                    android:textColor="@color/colorVerdeAbeto"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha fin"/>
-                <EditText
-                    android:id="@+id/edtFechafin"
-                    android:textSize="10sp"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    />
+                    android:visibility="visible" />
 
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha inicio"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/edtFechainicio"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="38dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha fin"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/edtFechafin"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre Ambiente"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/edtNpmbambiente"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+                <EditText
+                    android:id="@+id/edtDescripamb"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorCeleste"
+                    android:textColorLink="@color/colorFondo"
+                    android:textIsSelectable="false"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Imagenes Ambiente"
+                    android:textColor="@color/colorVerdeAbeto"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnAgregar"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="300dp"
                 android:text="Agregar" />
+
             <Button
                 android:id="@+id/btnCargar"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="10dp"
                 android:text="Cargar" />
         </LinearLayout>
     </ScrollView>
