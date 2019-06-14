@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,9 +25,9 @@ public class Modulo3 extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modulo3);
 
-        Button uni = (Button)findViewById(R.id.btnUniversi);
-        Button aul = (Button)findViewById(R.id.btnAluas);
-        Button labo = (Button)findViewById(R.id.btnLaborat);
+        CardView uni = (CardView) findViewById(R.id.cardUniversity);
+        CardView aul = (CardView) findViewById(R.id.cardAulasestudio);
+        CardView labo = (CardView) findViewById(R.id.cardLabor);
 
         uni.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,22 +1,42 @@
 package com.example.guiautpbea;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 
-import java.util.Date;
 
+import android.graphics.Bitmap;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Aulas extends AppCompatActivity {
 
-    Button btn;
-    TextView vt;
+    EditText edtHorario, edtCodbeacon, edtNombrebeacon, edtFechainicio,edtFechafin;
+    Button btnAgregar, btnCargar, btnBuscar;
+    ImageView imagenes;
+    RequestQueue request;
+    RequestQueue requestQueue;
 
 
     @Override
@@ -24,24 +44,133 @@ public class Aulas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aulas);
 
-        btn = (Button)findViewById(R.id.btnHora);
-        vt = (TextView) findViewById(R.id.fecha);
+        edtHorario = (EditText) findViewById(R.id.edtHorario);
+        edtCodbeacon = (EditText) findViewById(R.id.edtCodbeacon);
+        edtNombrebeacon = (EditText) findViewById(R.id.edtNombreBeacon);
+        edtFechainicio = (EditText) findViewById(R.id.edtFechainicio);
+        edtFechafin = (EditText) findViewById(R.id.edtFechafin);
+        imagenes=(ImageView)findViewById(R.id.imagenId);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        btnAgregar = (Button)findViewById(R.id.btnAgregar);
+        btnCargar = (Button)findViewById(R.id.btnCargar);
+        btnBuscar = (Button)findViewById(R.id.btnConsultar);
+
+        request= Volley.newRequestQueue(getApplicationContext());
+
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn.setText(new Date().toString());
+
+                ejecutarServicio("http://192.168.1.15/bdutp/insertar_beacon.php");
 
             }
         });
-        Time today=new Time(Time.getCurrentTimezone());
-        today.setToNow();
-        int dia=today.monthDay;
-        int mes=today.month;
-        int ano=today.year;
-        mes=mes+1;
-        vt.setText("mes :"+mes+""+"dia :"+dia+""+"año :"+ ano);
 
+        btnCargar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagen();
+            }
+        });
+
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                consultarhorario("http://192.168.1.15/bdutp/buscaID_horario.php?id_horario="+edtHorario.getText()+"");
+            }
+        });
 
     }
+
+    private void cargarImagen(){
+
+        String url = "http://192.168.1.15:80/bdutp/imagen/campus.jpg";
+        url=url.replace(" ","%20");
+
+        ImageRequest imageRequest=new ImageRequest(url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+
+                imagenes.setImageBitmap(response);
+
+            }
+        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplication(),"error al cargar imagen",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        request.add(imageRequest);
+
+    }
+    private void ejecutarServicio(String URL){
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "OPERACION EXITOSA", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> parametros=new HashMap<String, String>();
+                parametros.put("id_horario",edtHorario.getText().toString());
+                parametros.put("cod_beacon",edtCodbeacon.getText().toString());
+                parametros.put("nomb_beacon",edtNombrebeacon.getText().toString());
+                parametros.put("fecha_inicio",edtFechainicio.getText().toString());
+                parametros.put("fecha_fin",edtFechafin.getText().toString());
+
+                return parametros;
+
+            }
+        };
+        requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+    private void consultarhorario(String URL){
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                JSONObject jsonObject = null;
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        jsonObject = response.getJSONObject(i);
+                        edtCodbeacon.setText(jsonObject.getString("cod_beacon"));
+                        edtNombrebeacon.setText(jsonObject.getString("nomb_beacon"));
+                        edtFechainicio.setText(jsonObject.getString("fecha_inicio"));
+                        edtFechafin.setText(jsonObject.getString("fecha_fin"));
+
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(),"ERROR CONEXION",Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
+        );
+        requestQueue=Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+    }
 }
+
