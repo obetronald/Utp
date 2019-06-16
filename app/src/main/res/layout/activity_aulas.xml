@@ -148,7 +148,7 @@
 
                 <EditText
                     android:id="@+id/edtNombreBeacon"
-                    android:layout_width="66dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorCeleste"
                     android:textColorLink="@color/colorFondo"
@@ -260,20 +260,21 @@
         </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:layout_gravity="center"
+                android:layout_width="355dp"
+                android:layout_height="286dp"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imagenesId"
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_width="282dp"
+                    android:layout_height="217dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/labc" />
 
 
             </LinearLayout>
@@ -283,7 +284,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="250dp"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="10dp"
                 android:text="Agregar" />
 
             <Button
@@ -291,7 +292,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="250dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="Cargar" />
         </LinearLayout>
     </ScrollView>

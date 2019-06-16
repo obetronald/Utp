@@ -76,7 +76,7 @@ public class Aulas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cargarImagen();
-                cargarImagen1();
+
             }
         });
 
@@ -91,7 +91,7 @@ public class Aulas extends AppCompatActivity {
 
     private void cargarImagen(){
 
-        String url = "http://192.168.1.15:80/bdutp/imagen/campus.jpg";
+        String url = "http://192.168.1.15/bdutp/imagen/plano.jpg";
         url=url.replace(" ","%20");
         url=url.replace(" ","%20");
 
@@ -114,31 +114,7 @@ public class Aulas extends AppCompatActivity {
         request.add(imageRequest);
 
     }
-    private void cargarImagen1(){
 
-        String url = "http://192.168.1.15:80/bdutp/imagen/labc.jpg";
-        url=url.replace(" ","%20");
-        url=url.replace(" ","%20");
-
-        ImageRequest imageRequest=new ImageRequest(url, new Response.Listener<Bitmap>() {
-            @Override
-            public void onResponse(Bitmap response) {
-
-                imagenes.setImageBitmap(response);
-
-            }
-        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getApplication(),"error al cargar imagen",Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        request.add(imageRequest);
-
-    }
     private void ejecutarServicio(String URL){
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
