@@ -47,6 +47,8 @@ public class Registro extends AppCompatActivity {
                             if (ok == true){
                                 Intent i = new Intent(Registro.this, Login.class);
                                 Registro.this.startActivity(i);
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(Registro.this);
+                                alerta.setMessage("Usuario Registrado");
                                 Registro.this.finish();
                             }else{
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(Registro.this);

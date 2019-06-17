@@ -83,7 +83,7 @@ public class Aulas extends AppCompatActivity {
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                consultarhorario("http://192.168.1.15/bdutp/buscaID_horario.php?id_horario="+edtHorario.getText()+"");
+                consultarhorario("http://beaconsobetay.000webhostapp.com/bdutp/buscaID_horario.php?id_horario="+edtHorario.getText()+"");
             }
         });
 
@@ -91,7 +91,7 @@ public class Aulas extends AppCompatActivity {
 
     private void cargarImagen(){
 
-        String url = "http://192.168.1.15/bdutp/imagen/plano.jpg";
+        String url = "http://beaconsobetay.000webhostapp.com/bdutp/imagen/plano.jpg";
         url=url.replace(" ","%20");
         url=url.replace(" ","%20");
 
