@@ -263,12 +263,13 @@
         </LinearLayout>
 
             <LinearLayout
-                android:layout_width="355dp"
-                android:layout_height="286dp"
-                android:gravity="center"
+                android:layout_width="258dp"
+                android:layout_height="195dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
 
                 <ImageView
@@ -277,7 +278,8 @@
                     android:layout_height="217dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/labc" />
+                    android:background="@drawable/labc"
+                    android:scaleType="fitCenter" />
 
 
             </LinearLayout>

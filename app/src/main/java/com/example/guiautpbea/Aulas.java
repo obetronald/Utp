@@ -83,7 +83,7 @@ public class Aulas extends AppCompatActivity {
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                consultarhorario("http://beaconsobetay.000webhostapp.com/bdutp/buscaID_horario.php?id_horario="+edtHorario.getText()+"");
+                consultarhorario("http://beaconsobetay.000webhostapp.com/buscaID_horario.php?id_horario="+edtHorario.getText()+"");
             }
         });
 
