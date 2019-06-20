@@ -28,6 +28,7 @@
 
 
     <android.support.v7.widget.GridLayout
+        android:background="@drawable/button_color"
         android:id="@+id/idGrid"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
